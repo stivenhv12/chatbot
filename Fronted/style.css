@@ -20,12 +20,14 @@ body {
 .container {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-  padding: 35px;
+  padding: 35px 25px;
   width: 100%;
   max-width: 650px;
   backdrop-filter: blur(20px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Título */
@@ -41,8 +43,7 @@ h1 {
 #chat-box {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  max-height: 400px;
+  justify-content: flex-start;
   height: 400px;
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.07);
@@ -52,7 +53,6 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
 }
-
 
 /* Estilos de mensajes */
 .user,
@@ -66,6 +66,7 @@ h1 {
   font-size: 15px;
   line-height: 1.5;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  word-wrap: break-word;
 }
 
 .user {
@@ -110,6 +111,7 @@ h1 {
 form {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 input[type="text"] {
@@ -123,6 +125,7 @@ input[type="text"] {
   color: #2c3e50;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
+  min-width: 0;
 }
 
 input[type="text"]:focus {
@@ -140,6 +143,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 195, 255, 0.4);
+  flex-shrink: 0;
 }
 
 button:hover {
@@ -161,6 +165,42 @@ button:hover {
 #chat-box .user,
 #chat-box .bot {
   margin-top: 30px;
+}
+
+/* 🧩 Responsividad */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input[type="text"],
+  button {
+    font-size: 15px;
+  }
+
+  .user,
+  .bot {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #chat-box {
+    height: 300px;
+    padding: 15px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
 }
 
   
